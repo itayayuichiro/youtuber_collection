@@ -10,10 +10,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<!-- Bootstrap core CSS -->
-	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<?php echo $this->Html->css('bootstrap.min.css'); ?>
 	<!-- Custom styles for this template -->
-	<link href="css/round-about.css?<?php echo uniqid(); ?>" rel="stylesheet">
-
+	<?php echo $this->Html->css('round-about.css'); ?>
 	<title>
 		<?php echo $cakeDescription ?>:
 		<?php echo $this->fetch('title'); ?>
