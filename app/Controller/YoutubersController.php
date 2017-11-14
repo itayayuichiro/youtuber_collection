@@ -9,4 +9,9 @@ class YoutubersController extends AppController {
         $this->loadModel('Office');
         $this->set('offices_data', $this->Office->find('all'));
 	}
+	public function detail(){
+		$this->layout = 'default';
+        $this->set('youtuber_detail', $this->Youtuber->find('first',['conditions' => ['id'=>$_GET['id']]]));
+	}
+
 }
