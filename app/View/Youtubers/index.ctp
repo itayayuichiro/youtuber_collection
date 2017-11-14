@@ -21,10 +21,7 @@
 		}
 	 ?>
 	  <p><a href="./search.php?all=yes">Youtuber一覧を見る</a></p>
-
 </div>
-
-
 <div class="row">
 	<div class="col-lg-12">
 	  <h2 class="my-4">事務所から探す</h2>
