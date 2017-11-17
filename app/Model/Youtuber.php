@@ -4,7 +4,7 @@ App::uses('AppModel', 'Model');
 
 class Youtuber extends AppModel {
 	public $name = 'Youtuber';
-	public function getAllList(){
+	public function getAllYoutuber(){
 		$data = $this->find('all');
 		return $data;
 	}
