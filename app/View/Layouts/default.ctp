@@ -74,7 +74,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<!--header_parts-->
 
 	                        
-	<div id="container">
+	<div class="container">
 		<?php 
 		echo $this->fetch('content');
 		 ?>
