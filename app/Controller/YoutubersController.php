@@ -5,6 +5,9 @@
 
 class YoutubersController extends AppController {
 	public function index(){
+        $this->set('youtubers_data', $this->Youtuber->getAllYoutuber());
+	}
+	public function top(){
         $this->set('youtubers_data', $this->Youtuber->getTopYoutuber());
         $this->loadModel('Office');
         $this->set('offices_data', $this->Office->find('all'));
