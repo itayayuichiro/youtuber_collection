@@ -14,7 +14,16 @@ class YoutubersController extends AppController {
 	}
 	public function detail(){
 		$this->layout = 'default';
-        $this->set('youtuber_detail', $this->Youtuber->find('first',['conditions' => ['id'=>$_GET['id']]]));
+		$avgs = $this->Youtuber->getAverage($_GET['id']);
+		print_r($avg);
+        $this->set('youtuber_avg',$avgs);
+        $result_array = mysql_fetch_assoc($avgs);
+        $kikaku_point = $result_array['kikaku_point'];
+		$movie_point = $result_array['movie_point'];
+        $this->set('kikaku_point', $kikaku_point);
+        $this->set('movie_point', $movie_point);
+
+//        $this->set('youtuber_detail', $this->Youtuber->find('first',['conditions' => ['id'=>$_GET['id']]]));
 	}
 
 }
