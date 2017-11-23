@@ -14,16 +14,28 @@ class YoutubersController extends AppController {
 	}
 	public function detail(){
 		$this->layout = 'default';
-		$avgs = $this->Youtuber->getAverage($_GET['id']);
-		print_r($avg);
-        $this->set('youtuber_avg',$avgs);
-        $result_array = mysql_fetch_assoc($avgs);
-        $kikaku_point = $result_array['kikaku_point'];
-		$movie_point = $result_array['movie_point'];
+		$result_array = $this->Youtuber->getAverage($_GET['id']);
+        $this->set('row',$this->Youtuber->getYoutuberDetail($_GET['id'])[0]['youtubers']);
+        $this->set('result',$this->Youtuber->getPopularMovies($_GET['id']));
+        $kikaku_point = $result_array[0][0]['kikaku_point'];
+		$movie_point = $result_array[0][0]['movie_point'];
         $this->set('kikaku_point', $kikaku_point);
         $this->set('movie_point', $movie_point);
-
 //        $this->set('youtuber_detail', $this->Youtuber->find('first',['conditions' => ['id'=>$_GET['id']]]));
+	}
+	public function movies(){
+		if ($_GET['all']==true) {
+	        $this->set('result', $this->Youtuber->getMoviesAll($_GET['youtuber_id']));
+		}else{
+	        $this->set('result', $this->Youtuber->getMovies($_GET['youtuber_id']));
+		}
+	}
+	public function movie(){
+		if ($_GET['all']==true) {
+	        $this->set('result', $this->Youtuber->getMoviesAll($_GET['youtuber_id']));
+		}else{
+	        $this->set('result', $this->Youtuber->getMovies($_GET['youtuber_id']));
+		}
 	}
 
 }
