@@ -27,6 +27,9 @@ class User extends AppModel {
       )
     )
   );
+    public function login($username,$password){
+        return $this->find('count',array( 'conditions' => array('username' => $username,'password' => $password)));
+    }
   
     public function insertUserData($id,$username,$password){
         $this->save(['id'=>$id,'username'=>$username,'password'=>$password]);

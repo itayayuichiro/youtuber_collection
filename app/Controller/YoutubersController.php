@@ -1,7 +1,7 @@
 <?php
 
 
-//App::uses('AppController', 'Controller');
+App::uses('AppController', 'Controller');
 
 class YoutubersController extends AppController {
 	public function index(){
@@ -13,7 +13,6 @@ class YoutubersController extends AppController {
         $this->set('offices_data', $this->Office->find('all'));
 	}
 	public function detail(){
-		$this->layout = 'default';
 		$result_array = $this->Youtuber->getAverage($_GET['id']);
         $this->set('row',$this->Youtuber->getYoutuberDetail($_GET['id'])[0]['youtubers']);
         $this->set('result',$this->Youtuber->getPopularMovies($_GET['id']));
@@ -31,11 +30,7 @@ class YoutubersController extends AppController {
 		}
 	}
 	public function movie(){
-		if ($_GET['all']==true) {
-	        $this->set('result', $this->Youtuber->getMoviesAll($_GET['youtuber_id']));
-		}else{
-	        $this->set('result', $this->Youtuber->getMovies($_GET['youtuber_id']));
-		}
+	    $this->set('result', $this->Youtuber->getMoviesAll($_GET['youtuber_id']));	
 	}
 
 }
