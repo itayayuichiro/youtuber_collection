@@ -30,8 +30,17 @@ class User extends AppModel {
     public function login($username,$password){
         return $this->find('count',array( 'conditions' => array('username' => $username,'password' => $password)));
     }
+    public function getUserId($username,$password){
+        return $this->find('first',array( 'conditions' => array('username' => $username,'password' => $password)));
+    }
   
     public function insertUserData($id,$username,$password){
         $this->save(['id'=>$id,'username'=>$username,'password'=>$password]);
+    }
+    public function saveReview($userid,$data){
+      //$this->User = new User();
+      $sql = "INSERT INTO `evaluations` (`user_id`,`channel_id`, `hindo`, `kikaku_point`, `movie_point`, `comment`)VALUES(".$userid.",".$data['channel_id'].",'".$data['hindo']."',". $data['kikaku_num'].",".$data['movie_num'].",'".$data['comment']."')";
+//      echo $sql;
+      $this->query($sql);
     }
 }

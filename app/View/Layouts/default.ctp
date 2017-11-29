@@ -14,7 +14,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<!-- Custom styles for this template -->
 	<?php echo $this->Html->css('round-about.css'); ?>
 	<title>
-		<?php echo $cakeDescription ?>:
+		Youtuberコレクション:
 		<?php echo $this->fetch('title'); ?>
 	</title>
 </head>

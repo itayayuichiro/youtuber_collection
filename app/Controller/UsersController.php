@@ -25,8 +25,10 @@ class UsersController extends AppController {
 			$username = $_POST['data']['User']['username'];
 			$password = $_POST['data']['User']['password'];
 			if ($this->User->login ($username,$password)) {
-		    	//$this->redirect('login');
+		    	$result = $this->User->getUserId ($username,$password);
 		    	$this->Session->write('logined', true);
+		    	$this->Session->write('username', $username);
+		    	$this->Session->write('userid', $result['User']['id']);
 		    	$this->redirect(array('controller' => 'youtubers', 'action' => 'index'));
 			}else{
 				echo "<script>alert('ログイン失敗')</script>";
@@ -39,7 +41,16 @@ class UsersController extends AppController {
     	$this->redirect('login');
 	}
 	public function review(){
+		if ($this->Session->read('logined')==false) {
+	    	$this->redirect('login');
+		}
+		if ($this->request->is ( 'post' )) {
+			$userid = $this->Session->read('userid');
+			$this->User->saveReview($userid,$this->request->data);
+		}else{
+	        $this->loadModel('Youtuber');
+	        $this->set('result', $this->Youtuber->getYoutuber($_GET['youtuber_id']));
+		}
 
-		
 	}
 }

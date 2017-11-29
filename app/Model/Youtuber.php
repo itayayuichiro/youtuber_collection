@@ -8,6 +8,9 @@ class Youtuber extends AppModel {
 		$data = $this->find('all');
 		return $data;
 	}
+    public function getYoutuber($youtuber_id){
+        return $this->find('first',array( 'conditions' => array('id' => $youtuber_id)));
+    }
 	public function getAllOfficeList(){
 		$data = $this->find('all',['limit' => 3]);
 		return $data;

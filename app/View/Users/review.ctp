@@ -6,14 +6,13 @@
 <!-- Team Members Row -->
 
 <?php
-	$query = "INSERT INTO `evaluations` (`channel_id`, `hindo`, `kikaku_point`, `movie_point`)VALUES(105, '時々見る', 50, 50);";
 	//$result = mysql_query($query);
-	$query = "select * from youtubers where id=".$_GET['id'];
-	$result = mysql_fetch_assoc(mysql_query($query));
-	$img = $result['profile_img'];
-	$id = $result['id'];
+	// $query = "select * from youtubers where id=".$_GET['id'];
+	// $result = mysql_fetch_assoc(mysql_query($query));
+	$img = $result['Youtuber']['profile_img'];
+	$id = $result['Youtuber']['id'];
  ?>
-<form action="./submit.php" method="get" accept-charset="utf-8">
+<form action="./review" method="post" accept-charset="utf-8">
   <div class="row">
     <div class="col-sm-2">評価するYoutuber</div>
 	<div>
