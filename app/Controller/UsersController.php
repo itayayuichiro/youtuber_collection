@@ -4,7 +4,12 @@
 App::uses('AppController', 'Controller');
 
 class UsersController extends AppController {
+	public function beforeFilter() {
+    }
 	public function add(){
+    	if ($this->Session->read('logined')) {
+			$this->redirect(array('controller' => 'youtubers', 'action' => 'index'));			
+		}
 	   if($this->request->is('post') && $this->User->save($this->request->data)){
 	      //ログイン
 	      //$this->request->dataの値を使用してログインする規約になっている
@@ -13,6 +18,9 @@ class UsersController extends AppController {
 	    }//		$this->User->insertUserData($_POST['id'],$_POST['username'],$_POST['password']);
 	}
 	public function login(){
+    	if ($this->Session->read('logined')) {
+			$this->redirect(array('controller' => 'youtubers', 'action' => 'index'));			
+		}
 		if ($this->request->is ( 'post' )) {
 			$username = $_POST['data']['User']['username'];
 			$password = $_POST['data']['User']['password'];
@@ -25,5 +33,13 @@ class UsersController extends AppController {
 		    	$this->redirect('login');
 			}
 		}
+	}
+	public function logout(){
+		$this->Session->write('logined', false);
+    	$this->redirect('login');
+	}
+	public function review(){
+
+		
 	}
 }

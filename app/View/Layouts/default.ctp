@@ -36,10 +36,28 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	        <li class="nav-item active">
 	          <a class="nav-link" href="./about.php">Youtuberコレクションとは</a>
 	        </li>
-	<!--        <li class="nav-item">
-	          <a class="nav-link" href="#">マイページ</a>
+	        <?php 
+	        if ($this->Session->read('logined')) {
+	        	?>
+	        <li class="nav-item active">
+				<a class="nav-link" href="/youtuber_collection/users/login">マイページ</a>
 	        </li>
-	        <li class="nav-item">
+	        <li class="nav-item active">
+				<a class="nav-link" href="/youtuber_collection/users/logout">ログアウト</a>
+	        </li>
+	        <?php
+	        }else{
+	        	?>
+	        <li class="nav-item active">
+	  			<a class="nav-link" href="/youtuber_collection/users/login">ログイン</a>
+	        </li>
+	        <li class="nav-item active">
+				<a class="nav-link" href="/youtuber_collection/users/add">会員登録</a>
+	        </li>	        
+	        <?php
+	        }
+	        ?>
+	<!--        <li class="nav-item">
 	          <a class="nav-link" href="#">お問い合わせ</a>
 	        </li>
 	-->      </ul>

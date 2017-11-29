@@ -5,3 +5,4 @@
   $this->Form->input('password') .
   $this->Form->end('Submit')
 ); ?>
+<a href="/youtuber_collection/users/add" title="">会員登録をしていない方はこちら</a>
