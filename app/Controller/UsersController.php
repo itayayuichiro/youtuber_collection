@@ -14,13 +14,16 @@ class UsersController extends AppController {
 	}
 	public function login(){
 		if ($this->request->is ( 'post' )) {
-			if ($this->User->login ($_POST['data']['User']['username'],$_POST['data']['User']['password'])) {
-
+			$username = $_POST['data']['User']['username'];
+			$password = $_POST['data']['User']['password'];
+			if ($this->User->login ($username,$password)) {
+		    	//$this->redirect('login');
+		    	$this->Session->write('logined', true);
+		    	$this->redirect(array('controller' => 'youtubers', 'action' => 'index'));
 			}else{
-
+				echo "<script>alert('ログイン失敗')</script>";
+		    	$this->redirect('login');
 			}
 		}
-	
-
 	}
 }
