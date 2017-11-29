@@ -13,6 +13,10 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<?php echo $this->Html->css('bootstrap.min.css'); ?>
 	<!-- Custom styles for this template -->
 	<?php echo $this->Html->css('round-about.css'); ?>
+	<?php echo $this->Html->css('round-about.css'); ?>
+	<?php echo $this->Html->script('jquery.min.js'); ?>
+	<?php echo $this->Html->script('popper.min.js'); ?>
+	<?php echo $this->Html->script('bootstrap.min.js'); ?>
 	<title>
 		Youtuberコレクション:
 		<?php echo $this->fetch('title'); ?>
@@ -97,5 +101,13 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('content');
 		 ?>
 	</div>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+      </div>
+      <!-- /.container -->
+    </footer>
 </body>
 </html>
