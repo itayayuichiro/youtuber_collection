@@ -15,6 +15,11 @@ class Youtuber extends AppModel {
 		$data = $this->find('all',['limit' => 3]);
 		return $data;
 	}
+	public function getOfficeYoutuber($office){
+		$this->Youtuber = new Youtuber();
+		$sql = "select * from youtubers where office like '%".$office."%'";
+		return $this->Youtuber->query($sql);
+	}
 	public function getAverage($id){
 		$this->Youtuber = new Youtuber();
 		$sql = "select avg(kikaku_point) as kikaku_point,avg(movie_point) as movie_point from evaluations where channel_id = ".$id;
@@ -27,7 +32,7 @@ class Youtuber extends AppModel {
 	}
 	public function getPopularMovies($id){
 		$this->Youtuber = new Youtuber();
-		$sql = "select * from popular_movie where youtuber_id = ".$_GET['id'];
+		$sql = "select * from popular_movie where youtuber_id = ".$id;
 		return $this->Youtuber->query($sql);
 	}
 	public function getTopYoutuber(){
@@ -37,6 +42,11 @@ class Youtuber extends AppModel {
 	public function getMovies($id){
 		$this->Youtuber = new Youtuber();
 		$sql = "select * from movies where youtuber_id = ".$id." limit 21";
+		return $this->Youtuber->query($sql);
+	}
+	public function getMovie($id){
+		$this->Youtuber = new Youtuber();
+		$sql = "select * from movies INNER JOIN youtubers ON movies.youtuber_id = youtubers.id where movies.id = ".$id;
 		return $this->Youtuber->query($sql);
 	}
 	public function getMoviesAll($id){

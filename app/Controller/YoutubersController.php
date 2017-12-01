@@ -30,7 +30,21 @@ class YoutubersController extends AppController {
 		}
 	}
 	public function movie(){
-	    $this->set('result', $this->Youtuber->getMoviesAll($_GET['youtuber_id']));	
+		$result = $this->Youtuber->getMovie($_GET['movie_id'])[0];
+	    $this->set('row', $result);
+		$result_array = $this->Youtuber->getAverage($result['youtubers']['id']);
+//		print_r($result['youtubers']['id']);
+        $this->set('result',$this->Youtuber->getPopularMovies($result['youtubers']['id']));
+        $kikaku_point = $result_array[0][0]['kikaku_point'];
+		$movie_point = $result_array[0][0]['movie_point'];
+        $this->set('kikaku_point', $kikaku_point);
+        $this->set('movie_point', $movie_point);
+	}
+	public function office(){
+	    $this->set('youtubers_data', $this->Youtuber->getOfficeYoutuber($_GET['office']));	
+	}
+	public function about(){
+
 	}
 
 }
