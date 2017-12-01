@@ -3,10 +3,10 @@
    RewriteRule    ^$ app/webroot/    [L]
    RewriteRule    (.*) app/webroot/$1 [L]
 </IfModule>
-<FilesMatch ".(jpg|jpeg|png|gif|svg|ico|js|css)$">
-	Header set Cache-Control "max-age=604800"
-</FilesMatch>
 ExpiresActive On
-ExpiresByType image/gif "access plus 1 weeks"
-ExpiresByType image/png "access plus 1 weeks"
-ExpiresByType image/jpg "access plus 1 weeks"
+ExpiresByType images/gif "access plus 1 weeks"
+ExpiresByType images/png "access plus 1 weeks"
+ExpiresByType images/jpg "access plus 1 weeks"
+ExpiresByType application/javascript "access plus 20 days"
+ExpiresByType application/x-javascript "access plus 20 days"
+ExpiresByType text/javascript "access plus 12 hours"
