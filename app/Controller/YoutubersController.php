@@ -23,7 +23,7 @@ class YoutubersController extends AppController {
 //        $this->set('youtuber_detail', $this->Youtuber->find('first',['conditions' => ['id'=>$_GET['id']]]));
 	}
 	public function movies(){
-		if ($_GET['all']==true) {
+		if (!empty($_GET['all']) && $_GET['all']==true) {
 	        $this->set('result', $this->Youtuber->getMoviesAll($_GET['youtuber_id']));
 		}else{
 	        $this->set('result', $this->Youtuber->getMovies($_GET['youtuber_id']));
@@ -33,12 +33,13 @@ class YoutubersController extends AppController {
 		$result = $this->Youtuber->getMovie($_GET['movie_id'])[0];
 	    $this->set('row', $result);
 		$result_array = $this->Youtuber->getAverage($result['youtubers']['id']);
-//		print_r($result['youtubers']['id']);
         $this->set('result',$this->Youtuber->getPopularMovies($result['youtubers']['id']));
         $kikaku_point = $result_array[0][0]['kikaku_point'];
 		$movie_point = $result_array[0][0]['movie_point'];
         $this->set('kikaku_point', $kikaku_point);
         $this->set('movie_point', $movie_point);
+        $this->set('id', $result['youtubers']['id']);
+
 	}
 	public function office(){
 	    $this->set('youtubers_data', $this->Youtuber->getOfficeYoutuber($_GET['office']));	

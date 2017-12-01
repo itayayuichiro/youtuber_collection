@@ -83,10 +83,10 @@
   <h3 class="my-4">人気動画</h3>
   <div class="row">
   <?php foreach ($result as $row) { ?>
-     <iframe class="if_rame" src="https://www.youtube.com/embed/<?php echo split('v=',$row['youtubers']['popular_movie']['movie_url'])[1] ?>" frameborder="0" allowfullscreen></iframe>
+     <iframe class="if_rame" src="https://www.youtube.com/embed/<?php echo split('v=',$row['popular_movie']['movie_url'])[1] ?>" frameborder="0" allowfullscreen></iframe>
   <?php } ?>
   </div>
-  <a href="./movies?youtuber_id=<?php echo $_GET['id'] ?>" title="">動画の一覧を見る</a>
+  <a href="./movies?youtuber_id=<?php echo $id ?>" title="">動画の一覧を見る</a>
   <!-- /.row -->
 
 <style>
