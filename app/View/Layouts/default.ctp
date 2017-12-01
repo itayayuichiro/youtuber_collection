@@ -33,12 +33,12 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	    <div class="collapse navbar-collapse" id="navbarResponsive">
 	      <ul class="navbar-nav ml-auto">
 	        <li class="nav-item active">
-	          <a class="nav-link" href="./index.php">Home
+	          <a class="nav-link" href="/youtuber_collection">Home
 	            <span class="sr-only">(current)</span>
 	          </a>
 	        </li>
 	        <li class="nav-item active">
-	          <a class="nav-link" href="./about">Youtuberコレクションとは</a>
+	          <a class="nav-link" href="/youtuber_collection/youtubers/about">Youtuberコレクションとは</a>
 	        </li>
 	        <?php 
 	        if ($this->Session->read('logined')) {
