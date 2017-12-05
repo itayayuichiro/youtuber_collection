@@ -47,16 +47,16 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 				<a class="nav-link" href="/youtuber_collection/users/login">マイページ</a>
 	        </li>
  -->	        <li class="nav-item active">
-				<a class="nav-link" href="/youtuber_collection/users/logout">ログアウト</a>
+				<a class="nav-link" href="/youtuber_collection/logout">ログアウト</a>
 	        </li>
 	        <?php
 	        }else{
 	        	?>
 	        <li class="nav-item active">
-	  			<a class="nav-link" href="/youtuber_collection/users/login">ログイン</a>
+	  			<a class="nav-link" href="/youtuber_collection/login">ログイン</a>
 	        </li>
 	        <li class="nav-item active">
-				<a class="nav-link" href="/youtuber_collection/users/add">会員登録</a>
+				<a class="nav-link" href="/youtuber_collection/signup">会員登録</a>
 	        </li>	        
 	        <?php
 	        }

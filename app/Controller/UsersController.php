@@ -32,7 +32,7 @@ class UsersController extends AppController {
 		    	$this->redirect(array('controller' => 'youtubers', 'action' => 'index'));
 			}else{
 				echo "<script>alert('ログイン失敗')</script>";
-		    	$this->redirect('login');
+//		    	$this->redirect('login');
 			}
 		}
 	}
@@ -47,6 +47,8 @@ class UsersController extends AppController {
 		if ($this->request->is ( 'post' )) {
 			$userid = $this->Session->read('userid');
 			$this->User->saveReview($userid,$this->request->data);
+		    	$this->redirect(array('controller' => 'youtubers', 'action' => 'detail?id='.$this->request->data['channel_id']));
+
 		}else{
 	        $this->loadModel('Youtuber');
 	        $this->set('result', $this->Youtuber->getYoutuber($_GET['youtuber_id']));

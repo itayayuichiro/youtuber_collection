@@ -55,6 +55,7 @@
         }
       ?>
       </span></p>
+      <a href="/youtuber_collection/users/review?youtuber_id=<?php echo $row['id'] ?>" class="btn btn-primary">このYoutuberを評価する</a>
 
       <h3 class="my-3">概要</h3>
       <p><?php echo $row['channel_about'] ?><br>(公式サイトより引用)</p>
