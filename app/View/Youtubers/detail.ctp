@@ -23,7 +23,8 @@
   <div class="row">
 
     <div class="col-md-8">
-      <img class="img-fluid main_img" src="<?php echo $row['profile_img'] ?>" alt="">
+      <?php $img = base64_encode($row['profile_img']); ?>
+      <img class="img-fluid main_img" src="data:image/png;base64,<?php echo $img; ?>" alt="">
     </div>
 
     <div class="col-md-4">

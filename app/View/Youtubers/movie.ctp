@@ -29,7 +29,8 @@
     </div>
 
     <div class="col-md-4">
-      <img class="img-fluid main_img" src="<?php echo $row['youtubers']['profile_img'] ?>" alt="">
+      <?php $img = base64_encode($row['youtubers']['profile_img']); ?>
+      <img class="img-fluid main_img" src="data:image/png;base64,<?php echo $img; ?>" alt="">
       <?php echo $row['youtubers']['sub_name'] ?>
 
       <h3 class="my-3">総合評価</h3>

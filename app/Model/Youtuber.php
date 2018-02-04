@@ -5,8 +5,8 @@ App::uses('AppModel', 'Model');
 class Youtuber extends AppModel {
 	public $name = 'Youtuber';
 	public function getAllYoutuber(){
-		$data = $this->find('all');
-		return $data;
+		$this->Youtuber= new Youtuber();
+		return $this->Youtuber->find('all',['limit' => 21]);
 	}
     public function getYoutuber($youtuber_id){
         return $this->find('first',array( 'conditions' => array('id' => $youtuber_id)));
@@ -52,6 +52,12 @@ class Youtuber extends AppModel {
 	public function getMoviesAll($id){
 		$this->Youtuber = new Youtuber();
 		$sql = "select * from movies where youtuber_id = ".$id."";
+		return $this->Youtuber->query($sql);
+	}
+	public function searchYoutubers($name){
+		$this->Youtuber = new Youtuber();
+		$sql = "select * from youtubers where channel_name like  '%".$name."%'";
+//		return $this->Youtuber->find(array('conditions' => array('youtubers.channel_name LIKE' => '%'. $name. '%')));
 		return $this->Youtuber->query($sql);
 	}
 }

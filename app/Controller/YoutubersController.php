@@ -14,12 +14,12 @@ class YoutubersController extends AppController {
 	}
 	public function detail(){
 		$result_array = $this->Youtuber->getAverage($_GET['id']);
-        $this->set('row',$this->Youtuber->getYoutuberDetail($_GET['id'])[0]['youtubers']);
-        $this->set('result',$this->Youtuber->getPopularMovies($_GET['id']));
-        $kikaku_point = $result_array[0][0]['kikaku_point'];
+    $this->set('row',$this->Youtuber->getYoutuberDetail($_GET['id'])[0]['youtubers']);
+    $this->set('result',$this->Youtuber->getPopularMovies($_GET['id']));
+    $kikaku_point = $result_array[0][0]['kikaku_point'];
 		$movie_point = $result_array[0][0]['movie_point'];
-        $this->set('kikaku_point', $kikaku_point);
-        $this->set('movie_point', $movie_point);
+    $this->set('kikaku_point', $kikaku_point);
+    $this->set('movie_point', $movie_point);
 //        $this->set('youtuber_detail', $this->Youtuber->find('first',['conditions' => ['id'=>$_GET['id']]]));
 	}
 	public function movies(){
@@ -31,21 +31,23 @@ class YoutubersController extends AppController {
 	}
 	public function movie(){
 		$result = $this->Youtuber->getMovie($_GET['movie_id'])[0];
-	    $this->set('row', $result);
+    $this->set('row', $result);
 		$result_array = $this->Youtuber->getAverage($result['youtubers']['id']);
-        $this->set('result',$this->Youtuber->getPopularMovies($result['youtubers']['id']));
-        $kikaku_point = $result_array[0][0]['kikaku_point'];
+    $this->set('result',$this->Youtuber->getPopularMovies($result['youtubers']['id']));
+    $kikaku_point = $result_array[0][0]['kikaku_point'];
 		$movie_point = $result_array[0][0]['movie_point'];
-        $this->set('kikaku_point', $kikaku_point);
-        $this->set('movie_point', $movie_point);
-        $this->set('id', $result['youtubers']['id']);
-
+    $this->set('kikaku_point', $kikaku_point);
+    $this->set('movie_point', $movie_point);
+    $this->set('id', $result['youtubers']['id']);
 	}
 	public function office(){
 	    $this->set('youtubers_data', $this->Youtuber->getOfficeYoutuber($_GET['office']));	
 	}
-	public function about(){
+  public function about(){
 
-	}
+  }
+  public function search(){
+    $this->set('youtubers_data', $this->Youtuber->searchYoutubers($_GET['name'])[0]);
+  }
 
 }

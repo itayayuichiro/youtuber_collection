@@ -2,9 +2,16 @@
 <?php
 print(
   $this->Form->create('User') .
-  $this->Form->input('username',array('class'=>'form-control','label' => 'ユーザー名')) .
-  $this->Form->input('password',array('class'=>'form-control','label' => 'パスワード')) .
-  $this->Form->end('Submit')
+  $this->Form->input('email',array('class'=>'form-control','label' => 'メールアドレス')) .
+  $this->Form->input('password',array('class'=>'form-control','label' => 'パスワード'))
 );
 ?>
+
+<br>
+<?php
+print(
+  $this->Form->button('ログイン', array('type' => 'submit','class'=>'form-control btn btn-success'))
+);
+?>
+<br>
 <a href="/youtuber_collection/users/add" title="">会員登録をしていない方はこちら</a>

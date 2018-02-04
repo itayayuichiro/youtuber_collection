@@ -17,7 +17,8 @@
     <div class="col-sm-2">評価するYoutuber</div>
 	<div>
 		<input type="hidden" name="channel_id" value="<?php echo $id; ?>"></input>	
-		<img src="<?php echo $img ?>" alt="" width="100px" height="100px">
+    <?php $img = base64_encode($img); ?>
+		<img src="data:image/png;base64,<?php echo $img; ?>" alt="" width="100px" height="100px">
 	</div>
   </div>
 	

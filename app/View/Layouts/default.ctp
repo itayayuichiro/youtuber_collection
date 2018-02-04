@@ -33,9 +33,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	    <div class="collapse navbar-collapse" id="navbarResponsive">
 	      <ul class="navbar-nav ml-auto">
 	        <li class="nav-item active">
-	          <a class="nav-link" href="/youtuber_collection">Home
-	            <span class="sr-only">(current)</span>
-	          </a>
+	      		<form action="/youtuber_collection/youtubers/search" method="get" accept-charset="utf-8">
+							<input type="text" name="name" value="">								      			
+	      		</form>
 	        </li>
 	        <li class="nav-item active">
 	          <a class="nav-link" href="/youtuber_collection/youtubers/about">Youtuberコレクションとは</a>

@@ -10,7 +10,8 @@
 			?>
 		<div class="col-lg-4 col-sm-6 text-center mb-4">
 			<a href="./youtubers/detail?id=<?php echo $row['Youtuber']['id'] ?>">
-		  <img class="rounded-circle img-fluid d-block mx-auto" src="<?php echo $row['Youtuber']['profile_img'] ?>" alt="">
+		  <?php $img = base64_encode($row['Youtuber']['profile_img']); ?>
+ 		  <img class="rounded-circle img-fluid d-block mx-auto" src="data:image/png;base64,<?php echo $img; ?>" alt="">
 		  <h3><?php echo $row['Youtuber']['channel_name'] ?>
 		  </h3>
 		  <p><?php echo $row['Youtuber']['sub_name'] ?></p>
