@@ -11,19 +11,33 @@ class UsersController extends AppController {
 			$this->redirect(array('controller' => 'youtubers', 'action' => 'index'));			
 		}
 	   if($this->request->is('post') && $this->User->save($this->request->data)){
-      $id = uniqid("ID");
-      mb_language("japanese");
-      mb_internal_encoding("UTF-8");
-      //日本語メール送信
-      $to = $_POST['data']['User']['email'];
-      $subject = "Youtuberコレクション仮登録";
-      $body = "仮登録が完了しました、URLをクリックした本登録を完了させてください\nhttp://ity-y.sakura.ne.jp/youtuber_collection/id=".$id;
-      $from = "keiji@example.com";
-      mb_send_mail($to,$subject,$body,"From:".$from);
+        $id = uniqid("ID");
+        mb_language("japanese");
+        mb_internal_encoding("UTF-8");
+        //日本語メール送信
+        $to = $_POST['data']['User']['email'];
+        $subject = "Youtuberコレクション登録";
+        $body = "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n
+          ■　登録メールアドレスのお知らせ\n
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n
+          登録メールアドレス：".$to."\n
+          登録パスワード：".$_POST['data']['User']['password']."\n
+          \n
+          下記アドレスからログインが可能です。\n
+          \n
+          \nhttp://ity-y.sakura.ne.jp/youtuber_collection/login\n
+          成人作品ログイン：https://www.dmm.co.jp/my/-/login/\n
+          \n
+          \n
+          【重要】\n
+          メールアドレスはYoutuberコレクションを利用するにあたり、大切な情報となります。\n
+          紛失されないようメモにお控えいただき、常に送受信が行えるようにしてください。\n";
+        $from = "info@mail.youtuber_collection.com";
+        mb_send_mail($to,$subject,$body,"From:".$from);
 	      //ログイン
 	      //$this->request->dataの値を使用してログインする規約になっている
 	      //$this->Auth->login();
-//	      $this->redirect('login');
+	      $this->redirect('login');
 	    }//		$this->User->insertUserData($_POST['id'],$_POST['username'],$_POST['password']);
 	}
 	public function login(){
