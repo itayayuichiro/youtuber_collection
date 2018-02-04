@@ -19,10 +19,11 @@ class UsersController extends AppController {
       $subject = "Youtuberコレクション仮登録";
       $body = "仮登録が完了しました、URLをクリックした本登録を完了させてください\nhttp://ity-y.sakura.ne.jp/youtuber_collection/id=".$id;
       $from = "keiji@example.com";
+      mb_send_mail($to,$subject,$body,"From:".$from);
 	      //ログイン
 	      //$this->request->dataの値を使用してログインする規約になっている
 	      //$this->Auth->login();
-	      $this->redirect('login');
+//	      $this->redirect('login');
 	    }//		$this->User->insertUserData($_POST['id'],$_POST['username'],$_POST['password']);
 	}
 	public function login(){
