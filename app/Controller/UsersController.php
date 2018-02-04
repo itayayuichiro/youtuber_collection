@@ -17,27 +17,14 @@ class UsersController extends AppController {
         //日本語メール送信
         $to = $_POST['data']['User']['email'];
         $subject = "Youtuberコレクション登録";
-        $body = "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n
-          ■　登録メールアドレスのお知らせ\n
-          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n
-          登録メールアドレス：".$to."\n
-          登録パスワード：".$_POST['data']['User']['password']."\n
-          \n
-          下記アドレスからログインが可能です。\n
-          \n
-          \nhttp://ity-y.sakura.ne.jp/youtuber_collection/login\n
-          成人作品ログイン：https://www.dmm.co.jp/my/-/login/\n
-          \n
-          \n
-          【重要】\n
-          メールアドレスはYoutuberコレクションを利用するにあたり、大切な情報となります。\n
-          紛失されないようメモにお控えいただき、常に送受信が行えるようにしてください。\n";
+        $body = "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n■　登録メールアドレスのお知らせ\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n登録メールアドレス：".$to."\n登録パスワード：".$_POST['data']['User']['password']."\n\n下記アドレスからログインが可能です。\n\n\nhttp://ity-y.sakura.ne.jp/youtuber_collection/login\n\n\n【重要】\nメールアドレスはYoutuberコレクションを利用するにあたり、大切な情報となります。\n紛失されないようメモにお控えいただき、常に送受信が行えるようにしてください。\n";
         $from = "info@mail.youtuber_collection.com";
         mb_send_mail($to,$subject,$body,"From:".$from);
 	      //ログイン
 	      //$this->request->dataの値を使用してログインする規約になっている
 	      //$this->Auth->login();
 	      $this->redirect('login');
+        echo "登録が完了メールをあ客様のアドレスに送信しました。" ;
 	    }//		$this->User->insertUserData($_POST['id'],$_POST['username'],$_POST['password']);
 	}
 	public function login(){
