@@ -20,12 +20,14 @@ class UsersController extends AppController {
         $body = "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n■　登録メールアドレスのお知らせ\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n登録メールアドレス：".$to."\n登録パスワード：".$_POST['data']['User']['password']."\n\n下記アドレスからログインが可能です。\n\n\nhttp://ity-y.sakura.ne.jp/youtuber_collection/login\n\n\n【重要】\nメールアドレスはYoutuberコレクションを利用するにあたり、大切な情報となります。\n紛失されないようメモにお控えいただき、常に送受信が行えるようにしてください。\n";
         $from = "info@mail.youtuber_collection.com";
         mb_send_mail($to,$subject,$body,"From:".$from);
-	      //ログイン
-	      //$this->request->dataの値を使用してログインする規約になっている
-	      //$this->Auth->login();
-	      $this->redirect('login');
-        echo "登録が完了メールをあ客様のアドレスに送信しました。" ;
-	    }//		$this->User->insertUserData($_POST['id'],$_POST['username'],$_POST['password']);
+        $username = $_POST['data']['User']['email'];
+        $password = $_POST['data']['User']['password'];
+        $result = $this->User->getUserId ($username,$password);
+        $this->Session->write('logined', true);
+        $this->Session->write('username', $username);
+        $this->Session->write('userid', $result['User']['id']);
+        $this->redirect(array('controller' => 'youtubers', 'action' => 'index'));
+	    }
 	}
 	public function login(){
     	if ($this->Session->read('logined')) {
