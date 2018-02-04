@@ -2,14 +2,10 @@
 App::uses('AppModel', 'Model');
 class User extends AppModel {
   public $validate = array(
-    'username' => array(
+    'email' => array(
       array(
         'rule' => 'isUnique', //重複禁止
         'message' => '既に使用されている名前です。'
-      ),
-      array(
-        'rule' => 'alphaNumeric', //半角英数字のみ
-        'message' => '名前は半角英数字にしてください。'
       ),
       array(
         'rule' => array('between', 2, 32), //2～32文字
@@ -28,14 +24,14 @@ class User extends AppModel {
     )
   );
     public function login($username,$password){
-        return $this->find('count',array( 'conditions' => array('username' => $username,'password' => $password)));
+        return $this->find('count',array( 'conditions' => array('email' => $username,'password' => $password)));
     }
     public function getUserId($username,$password){
-        return $this->find('first',array( 'conditions' => array('username' => $username,'password' => $password)));
+        return $this->find('first',array( 'conditions' => array('email' => $username,'password' => $password)));
     }
   
     public function insertUserData($id,$username,$password){
-        $this->save(['id'=>$id,'username'=>$username,'password'=>$password]);
+        $this->save(['id'=>$id,'email'=>$username,'password'=>$password]);
     }
     public function saveReview($userid,$data){
       //$this->User = new User();

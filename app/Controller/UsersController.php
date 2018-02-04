@@ -8,6 +8,9 @@ class UsersController extends AppController {
     }
 	public function add(){
     if ($this->Session->read('logined')) {
+			$this->redirect(array('controller' => 'youtubers', 'action' => 'index'));			
+		}
+	   if($this->request->is('post') && $this->User->save($this->request->data)){
       $id = uniqid("ID");
       mb_language("japanese");
       mb_internal_encoding("UTF-8");
@@ -16,10 +19,6 @@ class UsersController extends AppController {
       $subject = "Youtuberコレクション仮登録";
       $body = "仮登録が完了しました、URLをクリックした本登録を完了させてください\nhttp://ity-y.sakura.ne.jp/youtuber_collection/id=".$id;
       $from = "keiji@example.com";
-
-			$this->redirect(array('controller' => 'youtubers', 'action' => 'index'));			
-		}
-	   if($this->request->is('post') && $this->User->save($this->request->data)){
 	      //ログイン
 	      //$this->request->dataの値を使用してログインする規約になっている
 	      //$this->Auth->login();
@@ -68,7 +67,7 @@ class UsersController extends AppController {
 	    	$this->redirect('login');
 		}
 		if ($this->request->is ( 'post' )) {
-			$userid = $this->Session->read('userid');
+			$userid = $this->Session->read('email');
 			$this->User->saveReview($userid,$this->request->data);
 		    	$this->redirect(array('controller' => 'youtubers', 'action' => 'detail?id='.$this->request->data['channel_id']));
 
